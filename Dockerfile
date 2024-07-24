@@ -1,7 +1,5 @@
 FROM ubuntu:jammy
-LABEL maintainer="znetwork@me.com"
-LABEL version="0.3"
-LABEL description="AIRPRINT FROM SYNOLOGY DSM 7 (HP, SAMSUNG, ETC)"
+LABEL description="AIRPRINT FROM SYNOLOGY DSM 7 (Canon URFII, HP, SAMSUNG, ETC)"
 
 RUN apt-get update && apt-get install -y \
 	locales \
@@ -28,6 +26,13 @@ RUN apt-get update && apt-get install -y \
 	wget \
 	rsync \
 	&& rm -rf /var/lib/apt/lists/*
+
+# Install Canon URFII driver
+WORKDIR /usr/src
+COPY canon-driver/linux-UFRII-drv-v590-m17n-03.tar.gz .
+RUN tar -xf linux-UFRII-drv-v590-m17n-03.tar.gz
+WORKDIR /usr/src/linux-UFRII-drv-v590-m17n
+RUN sh install.sh
 
 # This will use port 631
 EXPOSE 631
