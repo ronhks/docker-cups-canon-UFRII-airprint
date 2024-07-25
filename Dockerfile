@@ -1,38 +1,12 @@
-FROM ubuntu:jammy
+FROM znetwork/synology-airprint
 LABEL description="AIRPRINT FROM SYNOLOGY DSM 7 (Canon URFII, HP, SAMSUNG, ETC)"
-
-RUN apt-get update && apt-get install -y \
-	locales \
-	brother-lpr-drivers-extra brother-cups-wrapper-extra \
-	printer-driver-splix \
-	printer-driver-gutenprint \
-	gutenprint-doc \
-	gutenprint-locales \
-	libgutenprint9 \
-	libgutenprint-doc \
-	ghostscript \
-	hplip \
-	cups \
-	cups-pdf \
-	cups-client \
-	cups-filters \
-	inotify-tools \
-	avahi-daemon \
-	avahi-discover \
-	python3 \
-	python3-dev \
-	python3-pip \
-	python3-cups \
-	wget \
-	rsync \
-	&& rm -rf /var/lib/apt/lists/*
 
 # Install Canon URFII driver
 WORKDIR /usr/src
-COPY canon-driver/linux-UFRII-drv-v590-m17n-03.tar.gz .
-RUN tar -xf linux-UFRII-drv-v590-m17n-03.tar.gz
+COPY canon-driver/linux-UFRII-drv-v590-m17n-03-ronhks-mod.tar.gz .
+RUN tar -xf linux-UFRII-drv-v590-m17n-03-ronhks-mod.tar.gz
 WORKDIR /usr/src/linux-UFRII-drv-v590-m17n
-RUN sh install.sh
+RUN /usr/src/linux-UFRII-drv-v590-m17n/install.sh
 
 # This will use port 631
 EXPOSE 631
