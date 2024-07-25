@@ -1,11 +1,16 @@
-# znetwork/cups-avahi-airprint [docker-image](https://hub.docker.com/r/znetwork/synology-airprint)
+# Docker image available on [Docker Hub](https://hub.docker.com/r/ronhks/docker-cups-canon-urfii-airprint)
+## Based on [znetwork/cups-avahi-airprint](https://hub.docker.com/r/znetwork/synology-airprint) docker image.
 
-# Working on Synology DSM 7 (!!!) and AMD64
+# Working on Synology DSM 7 (!!!) and AMD64 with Canon URFII driver. Tested with Canon MF4800
 
-Fork from [quadportnick/docker-cups-airprint](https://github.com/quadportnick/docker-cups-airprint) and [chuckcharlie/docker-cups-airprint](https://github.com/chuckcharlie/docker-cups-airprint)
+## Thanks to
+Fork from 
+* [znetwork/cups-avahi-airprint](https://github.com/ronhks/docker-cups-canon-URFII-airprint) and 
+* [quadportnick/docker-cups-airprint](https://github.com/quadportnick/docker-cups-airprint) and
+* [chuckcharlie/docker-cups-airprint](https://github.com/chuckcharlie/docker-cups-airprint)
 
 This Ubuntu-based Docker image runs a CUPS instance that is meant as an AirPrint relay for printers that are already on the network but not AirPrint capable.
-* `Included drivers HP, Samsung, Canon, Xerox, etc.`
+* `Included drivers Canon URFII, HP, Samsung, Canon, Xerox, etc.`
 
 ## Easy run command (use username and password: admin/admin):
 ```docker run --name airprint --restart unless-stopped --net host znetwork/synology-airprint:latest```
